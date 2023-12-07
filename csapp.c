@@ -1,3 +1,5 @@
+// THIS CODE WAS NOT WRITTEN BY BRENT YELLE; IT WAS PROVIDED VIA THE BOOK "Computer Systems: A Programmer's Perspective" by Randal Bryant
+
 /* 
  * csapp.c - Functions for the CS:APP3e book
  *
