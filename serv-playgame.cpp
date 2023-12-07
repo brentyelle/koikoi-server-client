@@ -37,12 +37,12 @@ int serviceKoiKoi (int cfd) {
 	// solicit for # of rounds
 	write_buf.clear();
 	write_buf += string("How many rounds of koi-koi would you like to play?\t");	// start building string for writing
-	Rio_writen(cfd, strdup(write_buf.c_str()), write_buf.length());
+	Rio_writen(cfd, const_cast<char*>(write_buf.c_str()), write_buf.length());
 	do {	//infinite loop until the user cooperates
 		// send message to client
 		write_buf.clear();
 		write_buf += string("Enter a number 1-12:\n");								// newline to end this message
-		Rio_writen(cfd, strdup(write_buf.c_str()), write_buf.length());				// send the message
+		Rio_writen(cfd, const_cast<char*>(write_buf.c_str()), write_buf.length());				// send the message
 		// read client's response
 		Rio_readinitb(&rio, cfd);											// set up for reading from client
 		Rio_readlineb(&rio, read_buf, 5);									// read from client
@@ -51,7 +51,7 @@ int serviceKoiKoi (int cfd) {
 		if (TOTALROUNDS > 12 || TOTALROUNDS < 1) {
 			write_buf.clear();
 			write_buf += "You must enter a number between 1 and 12, inclusive.\t";
-			Rio_writen(cfd, strdup(write_buf.c_str()), write_buf.length());
+			Rio_writen(cfd, const_cast<char*>(write_buf.c_str()), write_buf.length());
 		}
 	} while (TOTALROUNDS > 12 || TOTALROUNDS < 1);
 
@@ -87,36 +87,36 @@ int serviceKoiKoi (int cfd) {
 		// check for instant-win combos
 		if (playerHand.instantWin2222()) {
 			write_buf += string("You were dealt four pairs of matching cards--an instant-win combo!\tYou score 6 points, and this round is over.\t");
-			Rio_writen(cfd, strdup(write_buf.c_str()), write_buf.length());
+			Rio_writen(cfd, const_cast<char*>(write_buf.c_str()), write_buf.length());
 			playerScore += 6;
 			printStandings(cfd, playerScore, cpuScore);
 			continue;
 		} else if (playerHand.instantWin4()) {
 			write_buf += string("You were dealt four of a kind--an instant-win combo!\tYou score 6 points, and this round is over.\t");
-			Rio_writen(cfd, strdup(write_buf.c_str()), write_buf.length());
+			Rio_writen(cfd, const_cast<char*>(write_buf.c_str()), write_buf.length());
 			playerScore += 6;
 			printStandings(cfd, playerScore, cpuScore);
 			continue;
 		} else if (cpuHand.instantWin2222()) {
 			write_buf += string("The CPU was dealt four pairs of matching cards--an instant-win combo!\tThe CPU scores 6 points, and this round is over.\t");
-			Rio_writen(cfd, strdup(write_buf.c_str()), write_buf.length());
+			Rio_writen(cfd, const_cast<char*>(write_buf.c_str()), write_buf.length());
 			cpuScore += 6;
 			printStandings(cfd, playerScore, cpuScore);
 			continue;
 		} else if (cpuHand.instantWin4()) {
 			write_buf += string("The CPU was dealt four of a kind--an instant-win combo!\tThe CPU scores 6 points, and this round is over.\t");
-			Rio_writen(cfd, strdup(write_buf.c_str()), write_buf.length());
+			Rio_writen(cfd, const_cast<char*>(write_buf.c_str()), write_buf.length());
 			cpuScore += 6;
 			printStandings(cfd, playerScore, cpuScore);
 			continue;
 		} else if (tableHand.instantWin2222()) {
 			write_buf += string("The Table was dealt four pairs of matching cards--an instant-win combo!\tThis deal is null and void, and the round will be re-dealt.\t");
-			Rio_writen(cfd, strdup(write_buf.c_str()), write_buf.length());
+			Rio_writen(cfd, const_cast<char*>(write_buf.c_str()), write_buf.length());
 			currRound--;	// repeat this round
 			continue;
 		} else if (tableHand.instantWin4()) {
 			write_buf += string("The Table was dealt four of a kind--an instant-win combo!\tThis deal is null and void, and the round will be re-dealt.\t");
-			Rio_writen(cfd, strdup(write_buf.c_str()), write_buf.length());
+			Rio_writen(cfd, const_cast<char*>(write_buf.c_str()), write_buf.length());
 			currRound--;	// repeat this round
 			continue;
 		}
@@ -144,7 +144,7 @@ int serviceKoiKoi (int cfd) {
 				player_turn = (player_turn == false);	// toggle player_turn true <--> false for next iteration
 				write_buf.clear();
 				write_buf += "-----------------------------\t";
-				Rio_writen(cfd, strdup(write_buf.c_str()), write_buf.length());
+				Rio_writen(cfd, const_cast<char*>(write_buf.c_str()), write_buf.length());
 			}
 		}
 
@@ -177,7 +177,7 @@ int serviceKoiKoi (int cfd) {
 	// send ending message to user
 	write_buf.clear();
 	write_buf += string("Enter 99 to quit.\n");
-	Rio_writen(cfd, strdup(write_buf.c_str()), write_buf.length());
+	Rio_writen(cfd, const_cast<char*>(write_buf.c_str()), write_buf.length());
 	// get response from user
 	Rio_readinitb(&rio, cfd);
 	Rio_readlineb(&rio, read_buf, 20);
