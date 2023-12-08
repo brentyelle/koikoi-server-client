@@ -1,5 +1,5 @@
 # koikoi-server-client
-A server &amp; client pair for playing the hanafuda game Koi-Koi (text only).
+A server &amp; client pair for playing the [hanafuda](https://en.wikipedia.org/wiki/Hanafuda) card game [Koi-Koi](https://en.wikipedia.org/wiki/Koi-Koi) (text only).
 
 ## HOW TO COMPILE & RUN
 
@@ -20,7 +20,7 @@ Presumably, the hostname will be `localhost`.
 
 ## HANAFUDA CARDS
 
-Koi-Koi is a 2-player game played with a hanafuda deck, which consists of a deck with 12 suits (one for each month) of 4 cards each, for a total of 48 cards. The cards in each month can be LIGHT, SEED, RIBBON, or CHAFF type, and each suit has a different assortment of each. In total, the deck has 5 Lights, 9 Seeds, 10 ribbons, and 24 chaff.
+Koi-Koi is a 2-player game played with a hanafuda deck, which consists of a 12 suits (one for each month) of 4 cards each for a total of 48 cards. The cards in each month can be LIGHT, SEED, RIBBON, or CHAFF type, and each suit has a different assortment of each. In total, the deck has 5 Lights, 9 Seeds, 10 ribbons, and 24 chaff.
 
 ## GAME RULES
 
