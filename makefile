@@ -1,8 +1,8 @@
 all: server client
 
-server:                    csapp   server   hanafuda-card   hanafuda-deck   hanafuda-hands   serv-koikoi   serv-playgame
+server:                csapp   server   hanafuda-card   hanafuda-deck   hanafuda-hands   serv-koikoi   serv-playgame
 	g++ -o hserver.out csapp.o server.o hanafuda-card.o hanafuda-deck.o hanafuda-hands.o serv-koikoi.o serv-playgame.o
-client:                    csapp   final-client
+client:                csapp   final-client
 	g++ -o hclient.out csapp.o final-client.o
 
 hanafuda-card:
